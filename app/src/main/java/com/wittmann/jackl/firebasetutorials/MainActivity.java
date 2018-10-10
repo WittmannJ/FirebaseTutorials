@@ -29,10 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private DatabaseReference mDatabase;
-    private ListView mUserList;
 
-    private ArrayList<String> mUsernames = new ArrayList<>();
-    private ArrayList<String> mKeys = new ArrayList<>();
 
 
     @Override
@@ -41,54 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mUserList = (ListView) findViewById(R.id.user_list);
-
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mUsernames);
-        mUserList.setAdapter(arrayAdapter);
-
-
-        mDatabase.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                String value = dataSnapshot.getValue(String.class);
-                mUsernames.add(value);
-
-                String key = dataSnapshot.getKey();
-                mKeys.add(key);
-
-                arrayAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                String value = dataSnapshot.getValue(String.class);
-                String key = dataSnapshot.getKey();
-
-                int index =  mKeys.indexOf(key);
-                mUsernames.set(index, value);
-
-                arrayAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        
 
 
 
