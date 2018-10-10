@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +29,13 @@ public class MainActivity extends AppCompatActivity {
     // tutorial: https://www.youtube.com/watch?v=tg_7eV99RfM&list=PLGCjwl1RrtcSi2oV5caEVScjkM6r3HO9t&index=6
 
 
-    private DatabaseReference mDatabase;
+    private EditText mEmailField;
+    private EditText mPasswordField;
+
+    private Button mRegisterBtn;
+
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
 
 
@@ -37,10 +44,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        
+        mEmailField = (EditText) findViewById(R.id.email_field);
+        mPasswordField = (EditText) findViewById(R.id.password_field);
+
+        mRegisterBtn = (Button) findViewById(R.id.register_btn);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if(firebaseAuth.getCurrentUser() != null){
+
+                    //Intent User Account
+
+                }
+
+            }
+        };
+
 
 
 
     }
+        @Override
+        protected void onStart() {
+            super.onStart();
+
+            mAuth.addAuthStateListener(mAuthListener);
+
+        }
+
+
+
 }
