@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FirebaseTutorials</string>
+    <string name="click_to_change">Click to Change</string>
+    <string name="pls_enter_sth">pls enter sth</string>
 </resources>
