@@ -2,17 +2,13 @@ package com.wittmann.jackl.firebasetutorials;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,16 +16,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     // tutorial: https://www.youtube.com/watch?v=tg_7eV99RfM&list=PLGCjwl1RrtcSi2oV5caEVScjkM6r3HO9t&index=6
@@ -58,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mEmailField = (EditText) findViewById(R.id.email_field);
         mPasswordField = (EditText) findViewById(R.id.password_field);
 
-        mRegisterBtn = (Button) findViewById(R.id.register_btn);
+        mRegisterBtn = (Button) findViewById(R.id.signin_btn);
 
         mAuth = FirebaseAuth.getInstance();
 
